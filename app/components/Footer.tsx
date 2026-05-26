@@ -32,18 +32,18 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@gocloudforge.com"
-                  className="hover:text-[var(--accent)]"
-                >
-                  Get in touch: hello@gocloudforge.com
-                </a>
-              </li>
-              <li>
-                <a
                   href="mailto:security@gocloudforge.com"
                   className="hover:text-[var(--accent)]"
                 >
                   Security: security@gocloudforge.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@gocloudforge.com"
+                  className="hover:text-[var(--accent)]"
+                >
+                  Contact: hello@gocloudforge.com
                 </a>
               </li>
             </ul>

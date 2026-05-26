@@ -1,12 +1,18 @@
+import CopyButton from "./CopyButton";
+
 const pipBlock = `pip install ai-runtime-monitor
 ai-monitor --setup
 ai-monitor --start`;
 
-const brewBlock = `# Coming in v0.2.1 (2-3 days post-launch)
-brew tap rajan-cforge/vigil
+// The leading "Coming in v0.2.1" line is annotation, not a command.
+// Strip it before piping to the clipboard so users get only the four
+// commands they would actually run when the Homebrew tap is live.
+const brewAnnotation = "# Coming in v0.2.1 (2-3 days post-launch)";
+const brewCommands = `brew tap rajan-cforge/vigil
 brew install vigil
 vigil --setup
 vigil --start`;
+const brewBlock = `${brewAnnotation}\n${brewCommands}`;
 
 export default function Install() {
   return (
@@ -20,8 +26,15 @@ export default function Install() {
         </p>
 
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <CodeBlock title="pip" subtitle="Available now" code={pipBlock} />
-          <CodeBlock title="Homebrew" subtitle="v0.2.1" code={brewBlock} muted />
+          <CodeBlock title="pip" subtitle="Available now" code={pipBlock} copyText={pipBlock} copyLabel="pip" />
+          <CodeBlock
+            title="Homebrew"
+            subtitle="v0.2.1"
+            code={brewBlock}
+            copyText={brewCommands}
+            copyLabel="brew"
+            muted
+          />
         </div>
 
         <p className="mt-8 text-sm text-[var(--muted)]">
@@ -52,11 +65,15 @@ function CodeBlock({
   title,
   subtitle,
   code,
+  copyText,
+  copyLabel,
   muted = false,
 }: {
   title: string;
   subtitle: string;
   code: string;
+  copyText: string;
+  copyLabel: string;
   muted?: boolean;
 }) {
   return (
@@ -67,9 +84,12 @@ function CodeBlock({
     >
       <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2">
         <span className="text-sm font-semibold text-[var(--foreground)]">{title}</span>
-        <span className="font-mono text-xs uppercase tracking-wide text-[var(--muted)]">
-          {subtitle}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-xs uppercase tracking-wide text-[var(--muted)]">
+            {subtitle}
+          </span>
+          <CopyButton text={copyText} label={copyLabel} />
+        </div>
       </div>
       <pre className="overflow-x-auto px-4 py-4 text-sm leading-relaxed text-[var(--foreground)]">
         <code>{code}</code>
