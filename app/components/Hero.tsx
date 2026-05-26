@@ -1,3 +1,5 @@
+import InstallCTA from "./InstallCTA";
+
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
@@ -20,25 +22,7 @@ export default function Hero() {
             supply chain risk, and adversarial behavior in real time.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-            <a
-              href="#install"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[#0d1117] transition hover:brightness-110 sm:text-base"
-            >
-              Install with pip
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                className="size-4"
-                aria-hidden="true"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm.78-11.53a.75.75 0 0 0-1.06 1.06L11.19 9H6.75a.75.75 0 0 0 0 1.5h4.44l-1.47 1.47a.75.75 0 1 0 1.06 1.06l2.75-2.75a.75.75 0 0 0 0-1.06l-2.75-2.75Z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
+            <InstallCTA />
             <a
               href="https://github.com/rajan-cforge/ai-runtime-monitor-enterprise"
               target="_blank"
@@ -109,9 +93,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <p className="mt-3 text-center text-xs text-[var(--muted)]">
-            Replace with a real dashboard screenshot before launch.
-          </p>
         </div>
       </div>
     </section>

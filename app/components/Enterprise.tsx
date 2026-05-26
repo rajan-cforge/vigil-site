@@ -13,7 +13,7 @@ export default function Enterprise() {
         </p>
         <div className="mt-8">
           <a
-            href="mailto:support@gocloudforge.com?subject=Vigil%20enterprise%20inquiry"
+            href="mailto:hello@gocloudforge.com?subject=Vigil%20enterprise%20inquiry"
             className="inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[#0d1117] transition hover:brightness-110"
           >
             Contact for enterprise
