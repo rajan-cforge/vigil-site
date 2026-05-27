@@ -38,9 +38,9 @@ npm run build
 
 ## Content source
 
-Long-form copy lives in `~/Documents/vigil-notes/brand-site-copy.md`
-(local-only, not in repo). Update that doc first, then translate
-changes into the component files under `app/components/`.
+Long-form copy is managed directly in the component files under
+`app/components/`. Edit those files for any copy change — there is no
+separate authoring doc to keep in sync.
 
 ## License
 
