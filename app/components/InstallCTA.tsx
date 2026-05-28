@@ -17,7 +17,7 @@ export default function InstallCTA() {
       }}
       className="inline-flex items-center justify-center gap-2 rounded-md bg-[var(--accent)] px-6 py-3 text-sm font-medium text-[#0d1117] transition hover:brightness-110 sm:text-base"
     >
-      Install with pip
+      Quick install
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
