@@ -1,50 +1,55 @@
 import CopyButton from "./CopyButton";
 
-const pipBlock = `pip install ai-runtime-monitor
+const installBlock = `git clone https://github.com/rajan-cforge/ai-runtime-monitor-enterprise.git vigil
+cd vigil
+python3.12 -m venv .venv
+source .venv/bin/activate
+pip install -e .
 ai-monitor --setup
-ai-monitor --start`;
-
-// The leading "Coming in v0.2.1" line is annotation, not a command.
-// Strip it before piping to the clipboard so users get only the four
-// commands they would actually run when the Homebrew tap is live.
-const brewAnnotation = "# Coming in v0.2.1 (2-3 days post-launch)";
-const brewCommands = `brew tap rajan-cforge/vigil
-brew install vigil
-vigil --setup
-vigil --start`;
-const brewBlock = `${brewAnnotation}\n${brewCommands}`;
+ai-monitor --start --with-proxy`;
 
 export default function Install() {
   return (
     <section id="install" className="border-t border-[var(--border)] bg-[var(--background)]">
       <div className="mx-auto max-w-5xl px-6 py-20 sm:py-24">
         <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
-          Install in 30 seconds
+          Install
         </h2>
         <p className="mt-4 text-lg text-[var(--muted)]">
-          Free and open source. macOS today, Linux best-effort, Windows coming in v0.3.
+          Free and open source. macOS today (Sequoia 15 and 26.5 verified). Linux best-effort.
+          Windows planned for v0.3.
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <CodeBlock title="pip" subtitle="Available now" code={pipBlock} copyText={pipBlock} copyLabel="pip" />
-          <CodeBlock
-            title="Homebrew"
-            subtitle="v0.2.1"
-            code={brewBlock}
-            copyText={brewCommands}
-            copyLabel="brew"
-            muted
-          />
+        <div className="mt-10">
+          <div className="overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)]">
+            <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2">
+              <span className="text-sm font-semibold text-[var(--foreground)]">macOS</span>
+              <CopyButton text={installBlock} label="install" />
+            </div>
+            <pre className="overflow-x-auto px-4 py-4 text-sm leading-relaxed text-[var(--foreground)]">
+              <code>{installBlock}</code>
+            </pre>
+          </div>
         </div>
+
+        <p className="mt-8 text-sm text-[var(--muted)]">
+          The setup wizard generates a local CA, prompts you to paste one sudo command in the
+          same terminal to trust it, and walks you through loading the Chrome extension. Full
+          install takes about 5 minutes.
+        </p>
+        <p className="mt-4 text-sm text-[var(--muted)]">
+          Requires macOS 12+, Python 3.12+, Chrome, and brief terminal sudo access. PyPI / pipx
+          install path is planned for v0.3.
+        </p>
 
         <p className="mt-8 text-sm text-[var(--muted)]">
           Then open{" "}
           <code className="rounded bg-[var(--surface)] px-1.5 py-0.5 text-[var(--foreground)]">
             http://localhost:9081
           </code>{" "}
-          in your browser. The setup wizard walks you through certificate trust
-          (cryptographically constrained to AI domains only via X.509 NameConstraints), data
-          directory creation, and dashboard token generation.
+          in your browser. The CA is cryptographically constrained to AI domains only via X.509
+          NameConstraints — even if the CA key is compromised, it cannot be used to MITM banking
+          or email; the OS validator enforces the constraint.
         </p>
 
         <a
@@ -58,42 +63,5 @@ export default function Install() {
         </a>
       </div>
     </section>
-  );
-}
-
-function CodeBlock({
-  title,
-  subtitle,
-  code,
-  copyText,
-  copyLabel,
-  muted = false,
-}: {
-  title: string;
-  subtitle: string;
-  code: string;
-  copyText: string;
-  copyLabel: string;
-  muted?: boolean;
-}) {
-  return (
-    <div
-      className={`overflow-hidden rounded-lg border border-[var(--border)] bg-[var(--surface)] ${
-        muted ? "opacity-80" : ""
-      }`}
-    >
-      <div className="flex items-center justify-between border-b border-[var(--border)] px-4 py-2">
-        <span className="text-sm font-semibold text-[var(--foreground)]">{title}</span>
-        <div className="flex items-center gap-3">
-          <span className="font-mono text-xs uppercase tracking-wide text-[var(--muted)]">
-            {subtitle}
-          </span>
-          <CopyButton text={copyText} label={copyLabel} />
-        </div>
-      </div>
-      <pre className="overflow-x-auto px-4 py-4 text-sm leading-relaxed text-[var(--foreground)]">
-        <code>{code}</code>
-      </pre>
-    </div>
   );
 }

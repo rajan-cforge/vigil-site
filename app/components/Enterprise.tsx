@@ -6,10 +6,11 @@ export default function Enterprise() {
           For teams and enterprises
         </h2>
         <p className="mt-6 text-pretty text-lg text-[var(--muted)]">
-          Vigil&apos;s free tier runs on a single developer&apos;s machine. The Pro tier
-          ($29/month) adds full HTTPS proxy capture and LaunchAgent auto-start. Enterprise tier
-          adds fleet-scale monitoring with a control plane, RBAC, SSO, and SIEM integration.
-          We&apos;re booking design partners now for the v1.0 fleet dashboard launching in Q4 2026.
+          Vigil v0.2 is open source and runs on a single developer&apos;s machine — full HTTPS
+          proxy capture, LaunchAgent auto-start, and the complete capture matrix are included.
+          The forthcoming Enterprise tier adds fleet-scale monitoring with a control plane,
+          RBAC, SSO, and SIEM integration. We&apos;re booking design partners now for the v1.0
+          fleet dashboard launching in Q4 2026.
         </p>
         <div className="mt-8">
           <a

@@ -22,8 +22,8 @@ const features: Feature[] = [
         <circle cx="12" cy="12" r="3" />
       </svg>
     ),
-    heading: "Three-layer monitoring",
-    body: "Captures every AI agent action through JSONL session tailing, system process monitoring, and optional HTTPS proxy interception. Works with Claude Code, Cursor, Copilot, ChatGPT Desktop, and 15+ other agents. Zero configuration required for the basic layer.",
+    heading: "Four-layer monitoring",
+    body: "Captures AI agent activity through four paths: mitmproxy interception for any tool routed through HTTPS_PROXY, JSONL transcript tailing for Claude Code sessions, a Chrome extension for browser AI (verified end-to-end on claude.ai, chatgpt.com, gemini.google.com), and process/filesystem/network observation for desktop apps. Set up once, captures continuously.",
   },
   {
     icon: (
@@ -42,8 +42,8 @@ const features: Feature[] = [
         <path d="m9 12 2 2 4-4" />
       </svg>
     ),
-    heading: "Sensitive data detection",
-    body: "Detects AWS keys, GitHub tokens, Anthropic API keys, and 20+ other credential patterns in AI session data. Severity-ranked alerts with drill-down to the exact conversation turn where exposure occurred. Plaintext auto-purged after 30 days; metadata retained for audit.",
+    heading: "Credential leak detection",
+    body: "Scans every captured prompt and response for AWS keys, GitHub tokens (all 5 prefix variants), Anthropic and OpenAI API keys, JWT bearers, Slack webhooks, private keys, credit cards (Luhn-validated), SSNs, phone numbers, and database connection strings. Severity-ranked alerts with drill-down to the exact conversation turn. Plaintext masked on display and auto-purged after 30 days.",
   },
   {
     icon: (
@@ -64,7 +64,7 @@ const features: Feature[] = [
       </svg>
     ),
     heading: "Supply chain intelligence",
-    body: "Real-time CVE detection across 19 package managers via OSV.dev. Threat intel feeds from ThreatFox and URLhaus. Detects when AI agents install packages with known vulnerabilities or malicious behavior — before they execute.",
+    body: "Parses every install command an AI agent issues — npm, yarn, pnpm, pip, cargo, go get, gem, brew, apt, npx. Scores against a dictionary of known typosquats and high-risk packages. CVE detection via OSV.dev for PyPI, npm, crates.io, Go, and RubyGems. Threat-intel correlation via abuse.ch URLhaus and ThreatFox feeds.",
   },
 ];
 
