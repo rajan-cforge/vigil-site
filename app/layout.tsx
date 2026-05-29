@@ -1,16 +1,24 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+// Self-hosted Geist (sans) and Geist Mono. Variable woff2 files live at
+// public/fonts/, sourced from Vercel's geist npm package (SIL OFL 1.1 — see
+// public/fonts/LICENSE.txt). Self-hosting matches Vigil's "no telemetry,
+// runs locally, no external dependencies" framing — zero Google Fonts
+// requests at runtime, faster first paint for the static Cloudflare Pages
+// export, and reproducible builds independent of Google's CDN.
+const geist = localFont({
+  src: "../public/fonts/Geist-Variable.woff2",
+  variable: "--font-geist",
+  weight: "100 900",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+const geistMono = localFont({
+  src: "../public/fonts/GeistMono-Variable.woff2",
+  variable: "--font-geist-mono",
+  weight: "100 900",
   display: "swap",
 });
 
@@ -55,7 +63,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
