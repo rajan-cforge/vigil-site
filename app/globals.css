@@ -21,6 +21,11 @@
   /* brand + semantic status (the only colors that carry meaning) */
   --color-brand:    #6b8afd;
   --color-brand-hi: #5577f5;
+
+  /* Terminal-frame surface — intentionally one step below canvas
+     (#0c0e11) for depth contrast on faux-terminal blocks
+     (SupplyChainFeatureSection, future InstallSection). */
+  --color-terminal: #0a0c0f;
   --color-safe:     #3fb27a;
   --color-warn:     #d9a23f;
   --color-risk:     #e25563;
